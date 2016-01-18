@@ -1,7 +1,6 @@
 (function(module) {
   function Article (opts) {
-    // DONE: Convert property assignment to Functional Programming style. Now, ALL properties of `opts` will be
-    // assigned as properies of the newly created article object.
+    // DONE: Here, we are using Functional Programming to DRY out our property assignment.  ALL of the properties of our 'opts' object will now be assigned as properties of the newly created article object.
     Object.keys(opts).forEach(function(e, index, keys) {
       this[e] = opts[e];
     },this);
@@ -19,7 +18,7 @@
     return template(this);
   };
 
-  // TODO: Set up a DB table for articles.
+  // TODO: Setup a DB table for our articles.  Be sure to include all of the required fields and their associated constraints.
   Article.createTable = function(callback) {
     webDB.execute(
       '...',
@@ -39,7 +38,7 @@
   };
 
 
-  // TODO: Insert an article instance into the database:
+  // TODO: Insert an article instance into the database.  Be sure to make the values of each record dynamic.
   Article.prototype.insertRecord = function(callback) {
     webDB.execute(
       [
@@ -52,7 +51,7 @@
     );
   };
 
-  // TODO: Delete an article instance from the database:
+  // TODO: Delete an article instance from the database.
   Article.prototype.deleteRecord = function(callback) {
     webDB.execute(
       [
@@ -64,7 +63,7 @@
     );
   };
 
-  // TODO: Update an article instance, overwriting it's properties into the corresponding record in the database:
+  // TODO: Update an article instance, overwriting it's properties into the corresponding record in the database.
   Article.prototype.updateRecord = function(callback) {
     webDB.execute(
       [
@@ -86,6 +85,7 @@
   // If the DB has data already, we'll load up the data (sorted!), and then hand off control to the View.
   Article.fetchAll = function(next) {
     webDB.execute('', function(rows) {
+      // Check to see if our article has any rows
       if (rows.length) {
         // Now instanitate those rows with the .loadAll function, and pass control to the view.
 
